@@ -48,7 +48,7 @@ jobs:
           script: |
             cd /usr/local/dist
             docker-compose down
-            docker-compose -d up
+            docker-compose up -d
           #docker build -t hyperf:1.0 .
           #docker run -d -p 80:9501 hyperf:1.0
           
