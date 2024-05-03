@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v2
       # 部署到服务器
       - name: deploy
-        uses: easingthemes/ssh-deploy@v2.1.1
+        uses: easingthemes/ssh-deploy@v2.1.5
         env:
           # 本地.ssh文件下的私钥id_rsa，存在secrets的PRIVATE_KEY中
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
@@ -38,5 +38,17 @@ jobs:
           REMOTE_USER: "root"
           # 目标目录
           TARGET: '/usr/local/dist'
+      - name: start project
+      #https://github.com/marketplace/actions/ssh-remote-commands
+        ssh-remote-command:
+          key: ${{ secrets.PRIVATE_KEY }}
+          host: ${{ secrets.HOST }}
+          username: "root"
+          port: 22
+          script: |
+            cd /usr/local/dist
+            docker build -t hyperf:1.0 .
+            docker run -d -p 80:9501 hyperf:1.0
+          
 
 
