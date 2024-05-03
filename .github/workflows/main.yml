@@ -38,9 +38,9 @@ jobs:
           REMOTE_USER: "root"
           # 目标目录
           TARGET: '/usr/local/dist'
-      - name: start project
-      #https://github.com/marketplace/actions/ssh-remote-commands
-        ssh-remote-command:
+      - name: Execute Script # 第三步，执行安装依赖
+        uses: appleboy/ssh-action@master
+        with:
           key: ${{ secrets.PRIVATE_KEY }}
           host: ${{ secrets.HOST }}
           username: "root"
