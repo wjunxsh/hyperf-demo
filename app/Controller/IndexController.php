@@ -21,7 +21,7 @@ class IndexController extends AbstractController
 
         return [
             'method' => $method,
-            'message' => "Hello1 {$user}.",
+            'message' => "Hello12 {$user}.",
         ];
     }
 }
