@@ -31,6 +31,7 @@ jobs:
           ARGS: "-avzr --delete" 
           # 源目录，相对于$GITHUB_WORKSPACE根目录的路径
           SOURCE: "./"
+          REMOTE_PORT: 22
           # 服务器域名/IP
           REMOTE_HOST: ${{ secrets.HOST }}
           # 服务器默认用户名为root
